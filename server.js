@@ -7,6 +7,7 @@ const rollbar = new Rollbar({
     captureUncaught: true,
     captureUnhandledRejections: true
 })
+
 rollbar.log("Hello world")
 
 const app = express()
@@ -17,3 +18,8 @@ const port = process.env.PORT || 4550
 app.use(rollbar.errorHandler())
 
 app.listen(port, () => console.log(`Take us to warp ${port}`))
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/index.html'))
+    rollbar.info('html file served successfully.')
+})
