@@ -13,11 +13,6 @@ rollbar.log("Hello world")
 const app = express()
 app.use(express.json())
 
-const port = process.env.PORT || 4550
-
-app.use(rollbar.errorHandler())
-
-app.listen(port, () => console.log(`Take us to warp ${port}`))
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
@@ -27,11 +22,15 @@ app.get('/', (req, res) => {
 app.post('/api/donations', (req, res) => {
     function isValidJSON(text){
         try{
-        nonExistentFunction()
-    } catch (error) {
-        console.error(error)
+            nonExistentFunction()
+        } catch (error) {
+            console.error(error)
+        }
     }
-}
 })
 
+const port = process.env.PORT || 4550
+
 app.use(rollbar.errorHandler())
+
+app.listen(port, () => console.log(`Take us to warp ${port}`))
