@@ -12,7 +12,7 @@ rollbar.log("Hello world")
 const app = express()
 app.use(express.json())
 
-const port = process.env.PORT || 4545
+const port = process.env.PORT || 4550
 
 app.use(rollbar.errorHandler())
 
