@@ -23,3 +23,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
     rollbar.info('html file served successfully.')
 })
+
+app.post('/', (req, res) => {
+    try{
+        nonExistentFunction()
+    } catch (error) {
+        rollbar.error(error)
+    }
+})
