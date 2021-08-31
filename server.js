@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     rollbar.info('html file served successfully.')
 })
 
-app.post('/api/cats', (req, res) => {
+app.post('/api/donations', (req, res) => {
     function isValidJSON(text){
         try{
         nonExistentFunction()
@@ -33,3 +33,5 @@ app.post('/api/cats', (req, res) => {
     }
 }
 })
+
+app.use(rollbar.errorHandler())
