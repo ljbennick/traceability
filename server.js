@@ -25,9 +25,11 @@ app.get('/', (req, res) => {
 })
 
 app.post('/api/cats', (req, res) => {
-    try{
+    function isValidJSON(text){
+        try{
         nonExistentFunction()
     } catch (error) {
-        rollbar.error(error)
+        console.error(error)
     }
+}
 })
